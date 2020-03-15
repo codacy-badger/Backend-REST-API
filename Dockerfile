@@ -3,9 +3,10 @@ LABEL maintainer="davidgg090@gmail.com"
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./Pipfile /Pipfile
-RUN pip install pipenv
-RUN piven install
+COPY ./Pipfile  /Pipfile
+COPY ./Pipfile.lock /Pipfile.lock
+RUN pip3 install pipenv
+RUN pipenv install --system --deploy
 
 RUN mkdir /app
 WORKDIR /app
